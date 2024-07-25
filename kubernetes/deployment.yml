@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ldzib-simple-app
+  labels:
+    app: ldzib-simpmle-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ldzib-simple-app
+  template:
+    metadata:
+      labels:
+        app: ldzib-simple-app
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: ldzib-simple-app
+        image: 192.168.56.142:5000/ldzib-simple:latest
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 8000
